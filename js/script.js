@@ -1,10 +1,3 @@
-// Il computer deve generare 16 numeri casuali tra 1 e 100.
-// I numeri non possono essere duplicati.
-// In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
-// L’utente non può inserire più volte lo stesso numero.
-// Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
-// La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
-// Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
 // BONUS: (da fare solo se funziona tutto il resto)
 // all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
 // con difficoltà 0 => tra 1 e 100
@@ -14,23 +7,50 @@
 var arrayNumPc = [];
 var arrayNumUser = [];
 
-var i = 0;
-while (i < 16 && arrayNumPc.length < 16) {
 
-  var randomNumber = generateRandomNumber(1,10);
+while (arrayNumPc.length < 16) {
+  var randomNumber = generateRandomNumber(1,100);
   var numberChecked = checkNumberInArray(randomNumber,arrayNumPc);
-  if (numberChecked) {
-  i--;
-  } else {
+  if (!numberChecked) {
     arrayNumPc.push(randomNumber);
-    i++;
   }
-
 }
 
 
+while (!gameOver && arrayNumUser.length < 16) {
+  var userInput = parseInt(prompt('Enter a number'));
+  while(userInput == 0 || userInput > 100) {
+    userInput = parseInt(prompt('Enter a number between 1 & 100'));
+  }
 
-/*---------------------- */
+  var numberChecked = checkNumberInArray(userInput,arrayNumUser);
+   while(numberChecked) {
+      userInput = parseInt(prompt('Enter a number'));
+      numberChecked = checkNumberInArray(userInput,arrayNumUser);
+   }
+
+   arrayNumUser.push(userInput);
+
+  var gameOver = false;
+  for ( var i = 0; i < arrayNumPc.length; i++) {
+    if (userInput == arrayNumPc[i]) {
+      console.log(`GameOver, bomb is number : ${userInput}`);
+      console.log(`Your Score is : ${arrayNumUser.length - 1}`);
+      gameOver = true;
+    } 
+  }
+}
+
+// Arraypc numbers
+console.log(arrayNumPc); 
+// Array user numbers
+console.log(arrayNumUser);
+
+if(arrayUserPc.length == 16) {
+  console.log('You Win!');
+}
+
+/*----------------------------------------------------------------------------*/
 
 function generateRandomNumber(min,max) {
   return Math.floor(Math.random() * (max - min) + min);
@@ -39,7 +59,7 @@ function generateRandomNumber(min,max) {
 
 function checkNumberInArray(number,array) {
   var isInList = false;
-    for ( i = 0; i < array.length; i++) {
+    for ( var i = 0; i < array.length; i++) {
       if (number == array[i]) {
         return isInList = true;
       } 

@@ -10,3 +10,33 @@
 // con difficoltà 0 => tra 1 e 100
 // con difficoltà 1 =>  tra 1 e 80
 // con difficoltà 2 => tra 1 e 50
+
+var arrayNumPc = [1,2,2,1];
+var arrayNumUser = [];
+
+// while(arrayNumPc.length < 16) {
+
+  // var randomNumber = generateRandomNumber(1,10);
+  
+
+// }
+
+
+
+/*---------------------- */
+console.log(generateRandomNumber(1,10));
+function generateRandomNumber(min,max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+ 
+console.log(checkNumberInArray(2,arrayNumPc));
+
+function checkNumberInArray(number,array) {
+    for ( i = 0; i < array.length; i++) {
+      if (number == array[i]) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+}

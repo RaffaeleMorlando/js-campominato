@@ -2,6 +2,7 @@
 
 VERSIONE BASE 
 SENZA BUTTON PER LA SCELTA DEL LIVELLO E MESSAGGI DI GAMEOVER O WIN
+E GENERAZIONE DEI NUMERI USER AUTOMATICI
 
 */
 
@@ -99,16 +100,16 @@ function startGame () {
     
     while (!gameOver && arrayNumUser.length < (100 - 16)) {
 
-      // var userInput = parseInt(prompt('Enter a number')); *uncommment* 
-      var userInput = generateRandomNumber(1,100);
+      var userInput = parseInt(prompt('Enter a number')); //*uncommment* //
+      // var userInput = generateRandomNumber(1,100); //*COMMENT *//
       while(userInput == 0 || userInput > 100) {
         userInput = parseInt(prompt('Enter a number between 1 & 100'));
       }
     
       var numberChecked = checkNumberInArray(userInput,arrayNumUser);
       while(numberChecked) {
-        // userInput = parseInt(prompt('Enter a number')); *uncommment* 
-        userInput = generateRandomNumber(1,100);
+        userInput = parseInt(prompt('Enter a number')); //*uncommment* //
+        // userInput = generateRandomNumber(1,100); //*COMMENT *//
         numberChecked = checkNumberInArray(userInput,arrayNumUser);
       }
     
@@ -124,13 +125,13 @@ function startGame () {
       }
     }
   } else {
-    alert('No mode,no party!')
+    alert('No level,no party! =)')
   }
 
   // Arraypc numbers
-  console.log(arrayNumPc); 
+  console.log("ARRAY NUMBERS PC",arrayNumPc); 
   // Array user numbers
-  console.log(arrayNumUser);
+  console.log("ARRAY NUMBERS USER",arrayNumUser);
 
   if(arrayNumUser.length == (100 - 16)) {
     console.log('You Win!');

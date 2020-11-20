@@ -1,27 +1,25 @@
+/*
+
+VERSIONE BASE 
+SENZA BUTTON PER LA SCELTA DEL LIVELLO E MESSAGGI DI GAMEOVER O WIN
+
+*/
+
+
+
+
+// Bonus
 var arrayNumPc = [];
 var arrayNumUser = [];
 var choice = '';
-var result = document.getElementById('score');
-var wrapperStart = document.getElementById('start');
 
-
-// 1.
+// START GAME WHEN USER CLICK ON BUTTON
 var startButton = document.getElementById('startButton');
 startButton.addEventListener('click',
   function () {
-    choices.className = 'wrapperChoices show';
+    startGame();
   }
 )
-
-// 2.
-var levelButton = document.querySelectorAll('.choice');
-for (let i = 0; i < levelButton.length; i++) {
-  levelButton[i].addEventListener("click", function() {
-      choice = levelButton[i].innerText;
-      startGame(choice);
-  });
-}
-
 
 
 // RELOAD PAGE WHEN USER CLICK ON TITLE
@@ -48,10 +46,10 @@ function checkNumberInArray (number,array) {
   return isInList;
 }
 
-function chooseLevel (choice) {
+function chooseLevel (numero) {
 
-  switch (choice) {
-    case 'BEGINNER':
+  switch (numero) {
+    case '0':
       console.log('Beginner');
       while (arrayNumPc.length < 16) {
         var randomNumber = generateRandomNumber(1,100);
@@ -62,7 +60,7 @@ function chooseLevel (choice) {
       }
       break;
 
-    case 'MEDIUM':
+    case '1':
       console.log('Medium');
       while (arrayNumPc.length < 16) {
         var randomNumber = generateRandomNumber(1,80);
@@ -73,7 +71,7 @@ function chooseLevel (choice) {
       }
       break;
     
-    case 'HARD':
+    case '2':
       console.log('Hard');
       while (arrayNumPc.length < 16) {
         var randomNumber = generateRandomNumber(1,50);
@@ -91,25 +89,25 @@ function chooseLevel (choice) {
   return true;
 }
 
-function startGame (choice) {
+function startGame () {
 
-  // var choiceMode = prompt('Enter 0 - 1 - 2 to choice difficult level');
+  var choiceMode = prompt('Enter 0 - 1 - 2 to choice difficult level');
 
-  var ifGameStart = chooseLevel(choice);
+  var ifGameStart = chooseLevel(choiceMode);
 
   if (ifGameStart) {
     
     while (!gameOver && arrayNumUser.length < (100 - 16)) {
 
-      var userInput = parseInt(prompt('Enter a number'));
-      // var userInput = generateRandomNumber(1,100);
+      // var userInput = parseInt(prompt('Enter a number')); *uncommment* 
+      var userInput = generateRandomNumber(1,100);
       while(userInput == 0 || userInput > 100) {
         userInput = parseInt(prompt('Enter a number between 1 & 100'));
       }
     
       var numberChecked = checkNumberInArray(userInput,arrayNumUser);
       while(numberChecked) {
-        userInput = parseInt(prompt('Enter a number'));
+        // userInput = parseInt(prompt('Enter a number')); *uncommment* 
         userInput = generateRandomNumber(1,100);
         numberChecked = checkNumberInArray(userInput,arrayNumUser);
       }
@@ -121,12 +119,6 @@ function startGame (choice) {
         if (userInput == arrayNumPc[i]) {
           console.log(`GameOver, bomb is number : ${userInput}`);
           console.log(`Your Score is : ${arrayNumUser.length - 1}`);
-          wrapperStart.className = "wrapperStart hidden";
-          choices.className = 'wrapperChoices hidden';
-          result.className = "result show";
-          result.innerHTML += `<h2 class="bigRed">GameOver<h2>`;
-          result.innerHTML += `<h2>Bomb is number <span class="bomb">${userInput}<span></h2>`;
-          result.innerHTML += `<h2 class="totalScore">Your Score is ${arrayNumUser.length - 1}</h2>`
           gameOver = true;
         } 
       }
@@ -142,8 +134,6 @@ function startGame (choice) {
 
   if(arrayNumUser.length == (100 - 16)) {
     console.log('You Win!');
-    result.className = "result show";
-    result.innerHTML = `<h2 class=""winner>You Win</h2>`
   }
 
 }

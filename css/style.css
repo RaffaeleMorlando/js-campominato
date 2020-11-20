@@ -64,6 +64,18 @@ main {
 }
 .buttons:hover {
   animation: wiggle 4s 0.5s infinite;
+  background-color: #ea3546;
+  color: #fdfffc;
+}
+#beginner:hover {
+  background-color: #8CD867;
+}
+#medium:hover {
+  background-color: #ffffc7;
+  color: #011627;
+}
+#hard:hover {
+  background-color: #ea3546;
 }
 @keyframes wiggle {
 	5%,

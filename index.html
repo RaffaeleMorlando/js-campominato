@@ -9,16 +9,26 @@
 <body>
   <div class="container">
     <header>
-      <h1>MineField Game</h1>
+      <h1 id="title">MineField Game</h1>
     </header>
     <main>
       <div class="wrapperMainContent">
-        <button id="startButton">START GAME</button>
+        <div id="start" class="wrapperStart">
+          <button class="buttons" id="startButton">START GAME</button>
+        </div>
+        <div id="choices" class="wrapperChoices hidden">
+          <button class="buttons choice" id="beginner" value="0">BEGINNER</button>
+          <button class="buttons choice" id="medium" value="1">MEDIUM</button>
+          <button class="buttons choice" id="hard" value="2">HARD</button>
+        </div>
+        <div id="score" class="result hidden">
+        </div>
       </div>
     </main>
     <footer>
     </footer>
   </div>
-  <script src="js/script.js"></script>
+  <!-- <script src="js/script.js"></script> -->
+  <script src="js/scriptTest.js"></script>
 </body>
 </html>

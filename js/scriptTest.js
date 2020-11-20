@@ -144,6 +144,8 @@ function startGame (choice) {
 
   if(arrayNumUser.length == (100 - 16)) {
     console.log('You Win!');
+    result.className = "result show";
+    result.innerHTML = `<h2 class=""winner>You Win</h2>`
   }
 
 }

@@ -99,7 +99,7 @@ function startGame (choice) {
       var numberChecked = checkNumberInArray(userInput,arrayNumUser);
       while(numberChecked) {
         userInput = parseInt(prompt('Enter a number'));
-        userInput = generateRandomNumber(1,100);
+        // userInput = generateRandomNumber(1,100);
         numberChecked = checkNumberInArray(userInput,arrayNumUser);
       }
     

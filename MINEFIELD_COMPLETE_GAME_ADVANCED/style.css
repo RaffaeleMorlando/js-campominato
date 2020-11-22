@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Stalinist+One&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Stalinist One', cursive;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3rem;
+}
+main {
+  display: flex;
+}
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 20%;
+  height: calc(100vh / 2);
+  border: 3px solid rgb(172, 172, 172);
+  background-color: rgb(225, 223, 223);
+  margin: 2rem auto;
+}
+
+h3 {
+  font-size: 2rem;
+  color: red;
+}
+
+
+button {
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.container {
+  width: 50%;
+  height: 80vh;
+  margin: 2rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  font-weight: bold;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / 10);
+  border: 3px solid lightgray;
+  background-color: rgb(84, 83, 83);
+  cursor: pointer;
+}
+.whiteSmoke {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / 10);
+  border: 3px solid lightgray;
+  cursor: pointer;
+  background-color: whitesmoke;
+  pointer-events: none;
+}
+
+.red {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / 10);
+  border: 3px solid lightgray;
+  cursor: pointer;
+  background-color: red;
+  pointer-events: none;
+}
+
+i {
+  color: black;
+  font-size: 30px;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.show {
+  opacity: 1;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

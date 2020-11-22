@@ -1,5 +1,7 @@
 var parentContainer = document.querySelector('.container');
 var score = document.getElementById('scoreIs');
+var message = document.getElementById('messageToShow');
+var layover = document.querySelector('.layover');
 var restart = document.getElementById('restart');
 restart.addEventListener('click', 
   function () {
@@ -54,7 +56,10 @@ for (var i = 0; i < 100; i++) {
         if(parseInt(boxMini.innerText) == arrayNumPc[n]) {
           box.className = ('red');
           boxMini.innerHTML = `<i class="fas fa-bomb"></i>`;
-          alert('BOOM!');  
+          layover.className = ('layover show');
+          message.className = ('message showSpecial');
+          message.innerHTML = `GameOver`;
+          // alert('BOOM!');  
           counterPoints--
         }
       }
@@ -63,6 +68,7 @@ for (var i = 0; i < 100; i++) {
     }
   )
 }
+
 
 /*--------------------------------------------------*/ 
 function generateRandomNumber() {
